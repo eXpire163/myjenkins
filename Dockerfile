@@ -29,8 +29,6 @@ RUN apk --update add subversion
 
 
 # add ibm java
-
-
 RUN apk --update add --no-cache ca-certificates curl openssl binutils xz \
     && GLIBC_VER="2.25-r0" \
     && ALPINE_GLIBC_REPO="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" \
@@ -88,6 +86,7 @@ RUN set -eux; \
     rm -f /tmp/response.properties; \
     rm -f /tmp/index.yml; \
     rm -f /tmp/ibm-java.bin;
+    
     
 #ENV JAVA_HOME=/opt/ibm/java/jre \
 #    PATH=/opt/ibm/java/jre/bin:$PATH
