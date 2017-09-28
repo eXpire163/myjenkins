@@ -30,7 +30,6 @@ RUN apk --update add subversion
 
 # add ibm java
 
-
 RUN apk --update add --no-cache ca-certificates curl openssl binutils xz \
     && GLIBC_VER="2.25-r0" \
     && ALPINE_GLIBC_REPO="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" \
@@ -50,24 +49,24 @@ RUN set -eux; \
     ARCH="$(apk --print-arch)"; \
     case "${ARCH}" in \
        amd64|x86_64) \
-         ESUM='8721ed58195f90bcae6341033471322260dd4be21615c4e36cda9bb0eab24ca5'; \
-         YML_FILE='jre/linux/x86_64/index.yml'; \
+         ESUM='e0154e19d283b0257598cd62543c92f886cd0e33ce570750d80c92b1c27b532e'; \
+         YML_FILE='sdk/linux/x86_64/index.yml'; \
          ;; \
        i386) \
-         ESUM='973fd6f9c4a0f5fd4972b8bfa484d83360c3817cf9597346faa189ab63be074f'; \
-         YML_FILE='jre/linux/i386/index.yml'; \
+         ESUM='b45066ab6ae61b9a7b78b8828dc6f0dcd82ead18b120107c8f523c314592a1a8'; \
+         YML_FILE='sdk/linux/i386/index.yml'; \
          ;; \
        ppc64el|ppc64le) \
-         ESUM='2886890c98cde880ff4ffe10108c10e13df6e5b90ca19d924498b44a4aca0e2a'; \
-         YML_FILE='jre/linux/ppc64le/index.yml'; \
+         ESUM='52f54e1a4911f3a2123ea3e034818a1e8b2e707455ffb7dd9b104b6c5b4c38a6'; \
+         YML_FILE='sdk/linux/ppc64le/index.yml'; \
          ;; \
        s390) \
-         ESUM='eeee4ccf83c0a959e72e1da4a758f169614bbcc641ff7c65ab2530758c6629ca'; \
-         YML_FILE='jre/linux/s390/index.yml'; \
+         ESUM='6e5ebc6791a16e62be541c28a788884ac91f4a6b8441f2eabc04ebb3dd8278b5'; \
+         YML_FILE='sdk/linux/s390/index.yml'; \
          ;; \
        s390x) \
-         ESUM='b0b39f01ace528ba7f6cd7bb59a5311cc989afc8774eefd2e877c8f03a27380d'; \
-         YML_FILE='jre/linux/s390x/index.yml'; \
+         ESUM='f2aec41f74441a829e5bbbc62f14dc8dd85d8a256c2d6e46ec4e8c071f3b23ed'; \
+         YML_FILE='sdk/linux/s390x/index.yml'; \
          ;; \
        *) \
          echo "Unsupported arch: ${ARCH}"; \
@@ -88,9 +87,8 @@ RUN set -eux; \
     rm -f /tmp/response.properties; \
     rm -f /tmp/index.yml; \
     rm -f /tmp/ibm-java.bin;
-    
-    
-#ENV JAVA_HOME=/opt/ibm/java/jre \
-#    PATH=/opt/ibm/java/jre/bin:$PATH
 
+ENV JAVA_HOME=/opt/ibm/java/jre \
+    PATH=/opt/ibm/java/bin:$PATH
+    
 #end add ibm java
