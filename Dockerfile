@@ -82,6 +82,7 @@ RUN set -eux; \
     echo "LICENSE_ACCEPTED=TRUE" >> /tmp/response.properties; \
     mkdir -p /opt/ibm; \
     chmod +x /tmp/ibm-java.bin; \
+    cat /tmp/ibm-java.bin; \
     /tmp/ibm-java.bin -i silent -f /tmp/response.properties; \
     rm -f /tmp/response.properties; \
     rm -f /tmp/index.yml; \
